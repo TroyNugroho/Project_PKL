@@ -18,7 +18,7 @@ class HewanAdmin extends CI_Controller {
 	public function index()
 	{
         $sess['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
-        $data['hewan'] = $this->AdminModel->get_hewan ()->result();
+        $data['penugasan'] = $this->AdminModel->get_penugasan ()->result();
         
         $this->load->view('Admin/Template/Header',$sess);
         $this->load->view('Admin/Hewan',$data);
@@ -29,6 +29,7 @@ class HewanAdmin extends CI_Controller {
     {
         $sess['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
         $data['kategori'] = $this->AdminModel->get_kategori('kategori')->result();
+        $data['user'] = $this->AdminModel->get_user('user')->result();
         
         $this->load->view('Admin/Template/Header',$sess);
         $this->load->view('Admin/HewanTambah',$data);
@@ -37,44 +38,26 @@ class HewanAdmin extends CI_Controller {
 
     public function simpan_hewan()
     {
-        $nama_hewan = $this->input->post('nama_hewan');
-        $harga_hewan = $this->input->post('harga_hewan');
-        $berat = $this->input->post('berat');
-        $id_kategori_produk = $this->input->post('id_kategori_produk');
-        $detail_hewan = $this->input->post('detail_hewan');
-        $foto_hewan = $_FILES['foto_hewan']['name'];
-
-        if ($foto_hewan = '') {} else {
-            $config['upload_path'] = './upload/hewan';
-            $config['allowed_types'] = 'jpg|jpeg|png';
-
-            $this->load->library('upload', $config);
-            if (!$this->upload->do_upload('foto_hewan')) {
-                echo "foto Diri Gagal Di-Upload\n";
-            } else {
-                $foto_hewan = $this->upload->data('file_name');
-            }
-        }
+        $id_petugas = $this->input->post('id_petugas');
+        $id_kategori = $this->input->post('id_kategori');
+        
 
         $data = array(
-            'nama_hewan' => $nama_hewan,
-            'harga_hewan' => $harga_hewan,  
-            'berat' => $berat,  
-            'id_kategori_produk' => $id_kategori_produk,
-            'detail_hewan' => $detail_hewan,
-            'foto_hewan' => $foto_hewan,
+            'id_petugas' => $id_petugas, 
+            'id_kategori' => $id_kategori,
+            
         );
         // var_dump($data);
 
-        $this->AdminModel->insert_hewan($data, 'hewan');
+        $this->AdminModel->insert_hewan($data, 'penugasan');
         redirect('Admin/HewanAdmin');
     }
 
     public function edit_hewan($id)
     {
         $sess['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
-        $where = array('id_hewan'=> $id);
-        $data['hewan'] = $this->db->query("SELECT * FROM hewan hw, kategori kg WHERE hw.id_kategori_produk=kg.id_kategori_produk AND hw.id_hewan='$id'")->result();
+        $where = array('id_petugas'=> $id);
+        $data['penugasan'] = $this->db->query("SELECT * FROM penugasan hw, kategori kg WHERE hw.id_kategori=kg.id_kategori AND hw.id_hewan='$id'")->result();
         $data['kategori'] = $this->AdminModel->get_data('kategori')->result();
 
         $this->load->view('Admin/Template/Header',$sess);
@@ -88,7 +71,7 @@ class HewanAdmin extends CI_Controller {
         $nama_hewan = $this->input->post('nama_hewan');
         $harga_hewan = $this->input->post('harga_hewan');
         $berat = $this->input->post('berat');
-        $id_kategori_produk = $this->input->post('id_kategori_produk');
+        $id_kategori = $this->input->post('id_kategori');
         // $jenis_hewan = $this->input->post('jenis_hewan');
         $detail_hewan = $this->input->post('detail_hewan');
         $foto_hewan = $_FILES['foto_hewan']['name'];
@@ -119,7 +102,7 @@ class HewanAdmin extends CI_Controller {
             'nama_hewan' => $nama_hewan,
             'harga_hewan' => $harga_hewan,  
             'berat' => $berat,  
-            'id_kategori_produk' => $id_kategori_produk,
+            'id_kategori' => $id_kategori,
             // 'jenis_hewan' => $jenis_hewan,
             'detail_hewan' => $detail_hewan,
         );
@@ -136,7 +119,7 @@ class HewanAdmin extends CI_Controller {
     public function detail_hewan($id)
     {
         $sess['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
-        $data['hewan'] = $this->AdminModel->get_id_hewan($id);
+        $data['penugasan'] = $this->AdminModel->get_penugasan($id);
         
         $this->load->view('Admin/Template/Header',$sess);
         $this->load->view('Admin/HewanDetail', $data);

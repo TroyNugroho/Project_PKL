@@ -10,7 +10,7 @@
                             enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="exampleInputName1">Nama</label>
-                                <input type="hidden" name="id_hewan" value="<?= $hw->id_hewan ?>">
+                                <input type="hidden" name="id_penugasan" value="<?= $hw->id_penugasan ?>">
                                 <input type="text" class="form-control" name="nama_hewan"
                                     value="<?= $hw->nama_hewan ?>">
                             </div>
@@ -25,10 +25,10 @@
                             </div>
                             <div class="form-group">
                                 <label>Kategori Hewan</label>
-                                <select name="id_kategori_produk" class="form-control">
-                                    <option value="<?=$hw->id_kategori_produk?>"><?=$hw->nama_kategori?></option>
+                                <select name="id_kategori" class="form-control">
+                                    <option value="<?=$hw->id_kategori?>"><?=$hw->nama_kategori?></option>
                                     <?php foreach($kategori as $kg) : ?>
-                                    <option value="<?= $kg->id_kategori_produk?>"><?= $kg->nama_kategori ?></option>
+                                    <option value="<?= $kg->id_kategori?>"><?= $kg->nama_kategori ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>

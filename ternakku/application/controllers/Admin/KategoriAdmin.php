@@ -59,7 +59,7 @@ class KategoriAdmin extends CI_Controller {
 
     public function simpan_edit()
     {
-        $id_kategori_produk = $this->input->post('id_kategori_produk');
+        $id_kategori = $this->input->post('id_kategori');
         $nama_kategori = $this->input->post('nama_kategori');
 
         $data = array(
@@ -67,17 +67,17 @@ class KategoriAdmin extends CI_Controller {
         );
 
         $where = array(
-            'id_kategori_produk' => $id_kategori_produk
+            'id_kategori' => $id_kategori
         );
 
         $this->AdminModel->edit_user('kategori', $data, $where);
         redirect('Admin/KategoriAdmin');
     }
 
-    public function hapus($id_kategori_produk)
+    public function hapus($id_kategori)
     {
-        $where = array('id_kategori_produk' => $id_kategori_produk);
-        $this->AdminModel->delete_kategori($where, 'Kategori');
+        $where = array('id_kategori' => $id_kategori);
+        $this->AdminModel->delete_kategori($where, 'kategori');
         redirect('Admin/KategoriAdmin');
     }
 }?>

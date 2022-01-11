@@ -37,8 +37,8 @@
 								<select class="form-control" name="posisi">
 									<option value="<?= $us->posisi ?>"><?= $us->posisi ?></option>
 									<option value="admin">Admin</option>
-									<option value="penjual">Penjual</option>
-									<option value="pembeli">Pembeli</option>
+									<option value="pustakawan">Pustakawan</option>
+									<option value="administrasi">Administrasi</option>
 								</select>
 							</div>
 							<button type="submit" class="btn btn-primary me-2">Simpan</button>

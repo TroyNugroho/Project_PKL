@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>TERNAKKU</title>
+    <title>Daily Activity</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="<?= base_url() ?>./assets/Admin/vendors/feather/feather.css">
     <link rel="stylesheet" href="<?= base_url() ?>./assets/Admin/vendors/mdi/css/materialdesignicons.min.css">
@@ -114,11 +114,11 @@
                             <span class="menu-title">Kategori Tugas</span>
                         </a>
                     </li>
-                    <li class="nav-item nav-category">Proggress</li>
+                    <li class="nav-item nav-category">Dokumentasi</li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             <i class="menu-icon mdi mdi-basket-unfill"></i>
-                            <span class="menu-title">Tugas Proggress</span>
+                            <span class="menu-title">Tugas Berjalan</span>
                         </a>
                     </li>
                     <li class="nav-item">

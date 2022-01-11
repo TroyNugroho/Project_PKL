@@ -36,11 +36,11 @@ class HomeAdmin extends CI_Controller {
     public function edit_setting()
     {
         $data = array(
-            'id_toko' => 1,
+            'id_perpus' => 1,
             'lokasi' => $this->input->post('kota'),
-            'nama_toko' => $this->input->post('nama_toko'),
-            'alamat_toko' => $this->input->post('alamat_toko'),
-            'no_telp_toko' => $this->input->post('no_telp_toko')
+            'nama_perpus' => $this->input->post('nama_perpus'),
+            'alamat_perpus' => $this->input->post('alamat_perpus'),
+            'no_telp_perpus' => $this->input->post('no_telp_perpus')
         );
         
         $this->AdminModel->edit_setting($data);

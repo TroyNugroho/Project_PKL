@@ -25,21 +25,21 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="">Nama Toko</label>
-                                    <input name="nama_toko" class="form-control" value="<?= $setting->nama_toko?>"
+                                    <label for="">Nama Perpustakaan</label>
+                                    <input name="nama_perpus" class="form-control" value="<?= $setting->nama_perpus?>"
                                         required></input>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="">No Telp</label>
-                                    <input name="no_telp_toko" class="form-control" value="<?= $setting->no_telp_toko?>"
+                                    <input name="no_telp_perpus" class="form-control" value="<?= $setting->no_telp_perpus?>"
                                         required></input>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="">Alamat</label>
-                                <input name="alamat_toko" class="form-control" value="<?= $setting->alamat_toko?>"
+                                <input name="alamat_perpus" class="form-control" value="<?= $setting->alamat_perpus?>"
                                     required></input>
                             </div>
                             <div class="form-group">

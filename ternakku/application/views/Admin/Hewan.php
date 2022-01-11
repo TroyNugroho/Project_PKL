@@ -15,30 +15,27 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Nama Karyawan</th>
+                                                <th>Nama Petugas</th>
                                                 <th>Tugas</th>
-                                                <th>Bobot Tugas</th>
-                                                <th>Foto</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php 
 											$no=1;
-											foreach($penugasan as $ps) : ?>
+											foreach($penugasan as $tw) : ?>
                                             <tr>
                                                 <td> <?= $no++?> </td>
-                                                <td> <?= $ps->nama_penugasan?> </td>
-                                                <td> <?= $ps->tugas?> </td>
-                                                <td> <?= $ps->berat?> </td>
                                                 
+                                                <td> <?= $tw->id_petugas?></td>
+                                                <td> <?= $tw->id_kategori?></td>
                                                 <td>
                                                     <a type="button" class="btn btn-outline-info btn-fw"
-                                                        href="<?= base_url('Admin/HewanAdmin/edit_hewan/') . $ps->id_penugasan ?>">Edit</a>
+                                                        href="<?= base_url('Admin/HewanAdmin/edit_hewan/') . $tw->id_penugasan ?>">Edit</a>
                                                     <a type="button" class="btn btn-outline-warning btn-fw"
-                                                        href="<?= base_url('Admin/HewanAdmin/detail_hewan/') . $ps->id_penugasan ?>">Detail</a>
+                                                        href="<?= base_url('Admin/HewanAdmin/detail_hewan/') . $tw->id_penugasan ?>">Detail</a>
                                                     <a type="button" class="btn btn-outline-danger btn-fw"
-                                                        href="<?= base_url('Admin/HewanAdmin/hapus/') . $ps->id_penugasan ?>">Hapus</a>
+                                                        href="<?= base_url('Admin/HewanAdmin/hapus/') . $tw->id_penugasan ?>">Hapus</a>
                                                 </td>
                                             </tr>
                                             <?php endforeach; ?>

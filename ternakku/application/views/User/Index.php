@@ -64,7 +64,7 @@
                         <img src="<?= base_url() ?>./upload/hewan/<?= $hw->foto_hewan ?>" class="img-fluid" alt="Image"
                             style="width: contain; height: 250px; object-fit: cover;">
                         <div class="mask-icon">
-                            <a class="cart" href="<?= base_url('User/HomeUser/shop_detail/') . $hw->id_hewan?>">Detail
+                            <a class="cart" href="<?= base_url('User/HomeUser/shop_detail/') . $hw->id_penugasan?>">Detail
                                 Hewan</a>
                         </div>
                     </div>

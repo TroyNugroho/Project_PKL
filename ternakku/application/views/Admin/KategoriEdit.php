@@ -10,7 +10,7 @@
 							enctype="multipart/form-data">
 							<div class="form-group">
 								<label for="exampleInputName1">Nama</label>
-								<input type="hidden" name="id_kategori_produk" value="<?= $kg->id_kategori_produk ?>">
+								<input type="hidden" name="id_kategori" value="<?= $kg->id_kategori ?>">
 								<input type="text" class="form-control" name="nama_kategori"
 									value="<?= $kg->nama_kategori?>">
 							</div>

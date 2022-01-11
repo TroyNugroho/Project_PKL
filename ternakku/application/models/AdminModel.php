@@ -39,9 +39,9 @@ class AdminModel extends CI_Model{
 
     // Model Untuk Hewan
     
-    public function get_hewan()
+    public function get_penugasan()
     {
-        $query = $this->db->get('hewan');
+        $query = $this->db->get('penugasan');
         return $query;
     }
 
@@ -61,12 +61,12 @@ class AdminModel extends CI_Model{
         $this->db->delete($table);
     }
 
-    public function get_id_hewan($id)
+    public function get_id_penugasan($id)
     {
         $this->db->select('*');
-        $this->db->from('hewan');
-        $this->db->join('kategori', 'hewan.id_kategori_produk = kategori.id_kategori_produk');
-        $hasil = $this->db->where('id_hewan', $id)->get();
+        $this->db->from('penugasan');
+        $this->db->join('kategori', 'penugasan.id_kategori = kategori.id_kategori');
+        $hasil = $this->db->where('id_penugasan', $id)->get();
 
         if($hasil->num_rows() > 0){
             return $hasil->result();
@@ -106,9 +106,9 @@ class AdminModel extends CI_Model{
 
     public function get_id_kategori($id)
     {
-        $this->db->select('kategori.id_kategori_produk, kategori.nama_kategori');
+        $this->db->select('kategori.id_kategori, kategori.nama_kategori');
         $this->db->from('kategori');
-        $hasil = $this->db->where('id_kategori_produk', $id)->get();
+        $hasil = $this->db->where('id_kategori', $id)->get();
 
         if($hasil->num_rows() > 0){
             return $hasil->result();
@@ -122,13 +122,13 @@ class AdminModel extends CI_Model{
     {
         $this->db->select('*');
         $this->db->from('setting');
-        $this->db->where('id_toko',1);
+        $this->db->where('id_perpus',1);
         return $this->db->get()->row();
     }
 
     public function edit_setting($data)
     {
-        $this->db->where('id_toko',$data['id_toko']);
+        $this->db->where('id_perpus',$data['id_perpus']);
         $this->db->update('setting',$data);
     }
 }?>

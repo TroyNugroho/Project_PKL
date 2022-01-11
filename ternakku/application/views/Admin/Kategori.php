@@ -26,8 +26,8 @@
 												<td> <?= $no++?> </td>
 												<td> <?= $kg->nama_kategori?> </td>
 												<td>
-													<a type="button" class="btn btn-outline-info btn-fw" href="<?= base_url('Admin/KategoriAdmin/edit_kategori/') . $kg->id_kategori_produk ?>">Edit</a>
-													<a type="button" class="btn btn-outline-danger btn-fw" href="<?= base_url('Admin/KategoriAdmin/hapus/') . $kg->id_kategori_produk ?>">Hapus</a>
+													<a type="button" class="btn btn-outline-info btn-fw" href="<?= base_url('Admin/KategoriAdmin/edit_kategori/') . $kg->id_kategori ?>">Edit</a>
+													<a type="button" class="btn btn-outline-danger btn-fw" href="<?= base_url('Admin/KategoriAdmin/hapus/') . $kg->id_kategori ?>">Hapus</a>
 												</td>
 											</tr>
 											<?php endforeach; ?>
