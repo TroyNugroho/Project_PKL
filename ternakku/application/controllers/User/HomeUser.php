@@ -11,7 +11,6 @@ class HomeUser extends CI_Controller {
             redirect('Login');
         }else{
             $this->load->model('UserModel');
-            $this->load->model('KeranjangModel');
             $this->load->helper('url');         
         }
 
@@ -21,11 +20,9 @@ class HomeUser extends CI_Controller {
 	{
         $sess['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
         $sess['kategori'] = $this->UserModel->get_data('kategori')->result();
-        $sess['keranjang'] = $this->UserModel->total_keranjang();
-        $data['hewan'] = $this->UserModel->get_data('hewan')->result();
+        $data['penugasan'] = $this->UserModel->get_data('penugasan')->result();
         
         $id_user = $this->session->userdata('id_user');
-        $sess['hewan'] = $this->KeranjangModel->get_cart($id_user)->result();
 
         $this->load->view('User/Template/Header',$sess);
         $this->load->view('User/Index',$data);
@@ -115,10 +112,31 @@ class HomeUser extends CI_Controller {
     {
         $sess['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
         $sess['kategori'] = $this->UserModel->get_data('kategori')->result();
+        $data['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
+        $data['tugas'] = $this->UserModel->get_tugas('tugas')->result();
         
         $this->load->view('User/Template/Header',$sess);
-        $this->load->view('User/Tentang');
+        $this->load->view('User/Tentang',$data);
         $this->load->view('User/Template/Footer');
+    }
+
+    public function simpan_penugasan()
+    {
+        $id_user = $this->input->post('id_user');
+        $id_kategori = $this->input->post('id_kategori');
+        $id_tugas = $this->input->post('id_tugas');
+        
+
+        $data = array(
+            'id_user' => $id_user, 
+            'id_kategori' => $id_kategori,
+            'id_tugas' => $id_tugas
+            
+        );
+        // var_dump($data);
+
+        $this->UserModel->insert_penugasan($data, 'penugasan');
+        redirect('User/HomeUser');
     }
 
     public function kontak()
@@ -135,7 +153,7 @@ class HomeUser extends CI_Controller {
     {
         $sess['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
         $sess['kategori'] = $this->UserModel->get_data('kategori')->result();
-        $data['hewan'] = $this->UserModel->id_hewan($id);
+        $data['penugasan'] = $this->UserModel->id_penugasan($id);
 
         // var_dump($data);
         $this->load->view('User/Template/Header',$sess);

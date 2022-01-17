@@ -6,17 +6,19 @@ class UserModel extends CI_Model{
         $query = $this->db->get($table);
         return $query;
     }
-    
-    function total_keranjang() {
-        return $this->db->get('keranjang')->num_rows();
+
+    public function get_user()
+    {
+        $query = $this->db->get('user');
+        return $query;
     }
       
-    public function id_hewan($id)
+    public function id_penugasan($id)
     {
         $this->db->select('*');
-        $this->db->from('hewan');
-        $this->db->join('kategori', 'hewan.id_kategori = kategori.id_kategori');
-        $hasil = $this->db->where('id_hewan', $id)->get();
+        $this->db->from('penugasan');
+        $this->db->join('kategori', '[penugasan].id_kategori = kategori.id_kategori');
+        $hasil = $this->db->where('id_penugasan', $id)->get();
 
         if($hasil->num_rows() > 0){
             return $hasil->result();
@@ -25,19 +27,35 @@ class UserModel extends CI_Model{
         }
     }
 
+    public function insert_penugasan($table, $data)
+    {
+        $this->db->insert($data, $table);
+    }
+
+    public function get_penugasan()
+    {
+        $query = $this->db->get('penugasan');
+        return $query;
+    }
+
+    public function get_tugas()
+    {
+        $query = $this->db->get('tugas');
+        return $query;
+    }
+
     public function get_kategori()
     {
-        $this->db->from('hewan');
-        $this->db->join('kategori', 'kategori.id_kategori = hewan.id_kategori');
+        $this->db->from('penugasan');
+        $this->db->join('kategori', 'kategori.id_kategori = penugasan.id_kategori');
         return $this->db->get()->result();
     }
 
     public function id_kategori($id)
     {
-        $this->db->select('hewan.id_hewan, hewan.nama_hewan, hewan.harga_hewan, hewan.detail_hewan, 
-        hewan.foto_hewan,kategori.id_kategori, kategori.nama_kategori');
-        $this->db->from('hewan');
-        $this->db->join('kategori', 'hewan.id_kategori = kategori.id_kategori');
+        $this->db->select('penugasan.id_penugasan, penugasan.id_user, penugasan.id_tugas, kategori.id_kategori, kategori.nama_kategori');
+        $this->db->from('penugasan');
+        $this->db->join('kategori', 'penugasan.id_kategori = kategori.id_kategori');
         $hasil = $this->db->where('kategori.id_kategori', $id)->get();
 
         if($hasil->num_rows() > 0){
