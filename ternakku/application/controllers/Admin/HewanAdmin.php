@@ -18,7 +18,7 @@ class HewanAdmin extends CI_Controller {
 	public function index()
 	{
         $sess['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
-        $data['penugasan'] = $this->AdminModel->get_penugasan ()->result();
+        $data['penugasan'] = $this->AdminModel->get_penugasan();
         
         $this->load->view('Admin/Template/Header',$sess);
         $this->load->view('Admin/Hewan',$data);
@@ -30,6 +30,7 @@ class HewanAdmin extends CI_Controller {
         $sess['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
         $data['kategori'] = $this->AdminModel->get_kategori('kategori')->result();
         $data['user'] = $this->AdminModel->get_user('user')->result();
+        $data['tugas'] = $this->AdminModel->get_tugas('tugas')->result();
         
         $this->load->view('Admin/Template/Header',$sess);
         $this->load->view('Admin/HewanTambah',$data);
@@ -38,13 +39,19 @@ class HewanAdmin extends CI_Controller {
 
     public function simpan_hewan()
     {
-        $id_petugas = $this->input->post('id_petugas');
-        $id_kategori = $this->input->post('id_kategori');
+        $id_user = $this->input->post('id_user');
+        //$id_kategori = $this->input->post('id_kategori');
+        //$nama_user = $this->input->post('nama_user');
+        $id_tugas = $this->input->post('id_tugas');
+        //$nama_tugas = $this->input->post('nama_tugas');
         
 
         $data = array(
-            'id_petugas' => $id_petugas, 
-            'id_kategori' => $id_kategori,
+            'id_user' => $id_user,
+            //'nama_user' => $nama_user,
+            //'id_kategori' => $id_kategori,
+            'id_tugas' => $id_tugas,
+            //'nama_tugas' => $nama_tugas,
             
         );
         // var_dump($data);
@@ -56,9 +63,9 @@ class HewanAdmin extends CI_Controller {
     public function edit_hewan($id)
     {
         $sess['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
-        $where = array('id_petugas'=> $id);
-        $data['penugasan'] = $this->db->query("SELECT * FROM penugasan hw, kategori kg WHERE hw.id_kategori=kg.id_kategori AND hw.id_hewan='$id'")->result();
-        $data['kategori'] = $this->AdminModel->get_data('kategori')->result();
+        $where = array('id_penugasan'=> $id);
+        $data['penugasan'] = $this->db->query("SELECT * FROM penugasan tw, tugas tg WHERE tw.id_tugas=tg.id_tugas AND tw.id_penugasan='$id'")->result();
+        $data['tugas'] = $this->AdminModel->get_dtgs('tugas')->result();
 
         $this->load->view('Admin/Template/Header',$sess);
         $this->load->view('Admin/HewanEdit', $data);
@@ -126,10 +133,10 @@ class HewanAdmin extends CI_Controller {
         $this->load->view('Admin/Template/Footer');
     }
 
-    public function hapus($id_hewan)
+    public function hapus($id_penugasan)
     {
-        $where = array('id_hewan' => $id_hewan);
-        $this->AdminModel->delete_hewan($where, 'hewan');
+        $where = array('id_penugasan' => $id_penugasan);
+        $this->AdminModel->delete_hewan($where, 'penugasan');
         redirect('Admin/hewanAdmin');
     }
 }

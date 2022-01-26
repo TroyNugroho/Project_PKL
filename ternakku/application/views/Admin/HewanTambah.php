@@ -10,7 +10,7 @@
                             
                             <div class="form-group">
                                 <label>Nama Petugas</label>
-                                <select name="id_petugas" class="form-control">
+                                <select name="id_user" class="form-control">
                                     <option value="">--Pilih Petugas</option>
                                     <?php foreach($user as $us) : ?>
                                     <option value="<?= $us->id_user?>"><?= $us->nama ?></option>
@@ -27,6 +27,17 @@
                                     <?php endforeach; ?>
                                 </select>
                             </div>
+
+                            <div class="form-group">
+                                <label>Tugas</label>
+                                <select name="id_tugas" class="form-control">
+                                    <option value="">--Pilih Tugas</option>
+                                    <?php foreach($tugas as $tg) : ?>
+                                    <option value="<?= $tg->id_tugas?>"><?= $tg->nama_tugas ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+
                             <div class="form-group">
                                 <label>Keterangan</label>
                                 <textarea class="form-control" name="detail_hewan" rows="4"></textarea>

@@ -38,7 +38,7 @@
                 </div>
                 <div>
                     <a class="navbar-brand brand-logo" href="">
-                        <img src="<?= base_url() ?>./assets/Admin/images/logofix.png" alt="logo" />
+                        <img src="<?= base_url() ?>./assets/Admin/images/logogas.png" alt="logo" />
                     </a>
                     <a class="navbar-brand brand-logo-mini" href="">
                         <img src="<?= base_url() ?>./assets/Admin/images/logo-mini.svg" alt="logo" />
@@ -104,19 +104,25 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('Admin/HewanAdmin/index')?>">
-                            <i class="menu-icon mdi mdi-pig"></i>
+                            <i class="menu-icon mdi mdi-briefcase"></i>
                             <span class="menu-title">Penugasan</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('Admin/KategoriAdmin/index')?>">
-                            <i class="menu-icon mdi mdi-pig"></i>
+                            <i class="menu-icon mdi mdi-clipboard"></i>
                             <span class="menu-title">Kategori Tugas</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('Admin/TugasAdmin/index')?>">
+                            <i class="menu-icon mdi mdi-note"></i>
+                            <span class="menu-title">Tugas</span>
                         </a>
                     </li>
                     <li class="nav-item nav-category">Dokumentasi</li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="<?= base_url('Admin/DocAdmin/index')?>">
                             <i class="menu-icon mdi mdi-basket-unfill"></i>
                             <span class="menu-title">Tugas Berjalan</span>
                         </a>

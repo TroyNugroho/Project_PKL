@@ -26,9 +26,9 @@
 											foreach($penugasan as $tw) : ?>
                                             <tr>
                                                 <td> <?= $no++?> </td>
+                                                <td> <?= $tw->id_user?></td>
                                                 
-                                                <td> <?= $tw->id_petugas?></td>
-                                                <td> <?= $tw->id_kategori?></td>
+                                                <td> <?= $tw->id_tugas?></td>
                                                 <td>
                                                     <a type="button" class="btn btn-outline-info btn-fw"
                                                         href="<?= base_url('Admin/HewanAdmin/edit_hewan/') . $tw->id_penugasan ?>">Edit</a>

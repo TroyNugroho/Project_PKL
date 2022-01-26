@@ -37,12 +37,22 @@ class AdminModel extends CI_Model{
         }
     }
 
-    // Model Untuk Hewan
+    // Model Untuk penugasan
     
+    // public function get_penugasan()
+    // {
+    //     $query = $this->db->get('penugasan');
+    //     return $query;
+    // }
+
     public function get_penugasan()
     {
+        //$this->db->select('penugasan.*, u.id_user, u.nama, t.id_tugas, t.nama_tugas');
+        //$this->db->join('user as u', 'penugasan.id_user = u.id_user');
+        //$this->db->join('tugas as t', 'penugasan.id_tugas = t.id_tugas');
+        //$this->db->from('penugasan');
         $query = $this->db->get('penugasan');
-        return $query;
+        return $query->result();
     }
 
     public function insert_hewan($table, $data)
@@ -66,6 +76,7 @@ class AdminModel extends CI_Model{
         $this->db->select('*');
         $this->db->from('penugasan');
         $this->db->join('kategori', 'penugasan.id_kategori = kategori.id_kategori');
+        $this->db->join('user', 'penugasan.id_user = user.id_user');
         $hasil = $this->db->where('id_penugasan', $id)->get();
 
         if($hasil->num_rows() > 0){
@@ -117,6 +128,46 @@ class AdminModel extends CI_Model{
         }
     }
 
+    // Tugas
+    public function get_dtgs($table){
+        $query = $this->db->get($table);
+        return $query;
+    }
+
+    public function get_tugas()
+    {
+        $query = $this->db->get('tugas');
+        return $query;
+    }
+
+    public function insert_tugas($table, $data)
+    {
+        $this->db->insert($data, $table);
+    }
+
+    public function edit_tugas($table, $data, $where)
+    {
+        $this->db->update($table, $data, $where);
+    }
+
+    public function delete_tugas($where, $table)
+    {
+        $this->db->where($where);
+        $this->db->delete($table);
+    }
+
+    public function get_id_tugas($id)
+    {
+        $this->db->select('tugas.id_tugas, tugas.nama_tugas');
+        $this->db->from('tugas');
+        $hasil = $this->db->where('id_tugas', $id)->get();
+
+        if($hasil->num_rows() > 0){
+            return $hasil->result();
+        }else{
+            return false;
+        }
+    }
     //Setting
     public function data_setting()
     {
@@ -130,5 +181,14 @@ class AdminModel extends CI_Model{
     {
         $this->db->where('id_perpus',$data['id_perpus']);
         $this->db->update('setting',$data);
+    }
+
+    //Dashboard gk fix
+    public function count(){
+        return $this->db->count_all($this->_table);
+    }
+
+    public function county(){
+        return $this->db->count_all($this->_table);
     }
 }?>
