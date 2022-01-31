@@ -34,22 +34,29 @@
 
                             <div class="form-group">
                                 <label>Kategori Tugas</label>
-                                <select name="id_kategori" class="form-control">
+                                <select name="id_kategori" id="id_kategori" class="form-control">
                                     <option value="">--Pilih Kategori</option>
-                                    <?php foreach($kategori as $kg) : ?>
-                                    <option value="<?= $kg->id_kategori?>"><?= $kg->nama_kategori ?></option>
-                                    <?php endforeach; ?>
+                                    <?php
+                                        foreach($kategori as $kg){ 
+                                            echo "<option value='".$kg->id_kategori."'>".$kg->nama_kategori."</option>";
+                                        }
+                                    ?>
                                 </select>
                             </div>
                             
                             <div class="form-group">
                                 <label>Tugas</label>
-                                <select name="id_tugas" class="form-control">
+                                <select name="id_tugas" id="id_tugas" class="form-control">
                                     <option value="">--Pilih Tugas</option>
-                                    <?php foreach($tugas as $tu) : ?>
-                                    <option value="<?= $tu->id_tugas?>"><?= $tu->nama_tugas ?></option>
-                                    <?php endforeach; ?>
                                 </select>
+                                <div id="loading" style="margin-top: 15px;">
+                                    <img src="<?= base_url() ?>assets/images/loading.gif" width="18"><small>Loading...</small>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Tanggal</label><br>
+                                <input type="text" id="date" class="form-control">
                             </div>
 
                             <div class="form-group">

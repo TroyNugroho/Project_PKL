@@ -7,11 +7,11 @@ class HomeUser extends CI_Controller {
         parent::__construct();
         $this->load->library('form_validation');         
         $this->load->library('session');
-        if ($this->session->userdata('posisi') != "pembeli") {
-            redirect('Login');
-        }else{
+        if ($this->session->userdata('posisi') != "admin") {
             $this->load->model('UserModel');
-            $this->load->helper('url');         
+            $this->load->helper('url');
+        }else{
+            redirect('Login');         
         }
 
     }
@@ -111,25 +111,48 @@ class HomeUser extends CI_Controller {
     public function tentang()
     {
         $sess['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
-        $sess['kategori'] = $this->UserModel->get_data('kategori')->result();
+        $data['kategori'] = $this->UserModel->viewKategori();
         $data['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
-        $data['tugas'] = $this->UserModel->get_tugas('tugas')->result();
+        // $data['tugas'] = $this->UserModel->get_tugas('tugas')->result();
         
         $this->load->view('User/Template/Header',$sess);
         $this->load->view('User/Tentang',$data);
         $this->load->view('User/Template/Footer');
     }
 
+    public function log()
+    {
+        $sess['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
+        $data['log'] = $this->UserModel->get_skp();
+        $data['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
+
+        $this->load->view('User/Template/Header',$sess);
+        $this->load->view('User/Log',$data);
+        $this->load->view('User/Template/Footer');
+    } 
+
+    public function listTugas() {
+        $id_kategori = $this->input->post('id_kategori');
+        $tugas = $this->UserModel->viewByKategori($id_kategori);
+        $lists = "<option value=''>--Pilih Tugas</option>";
+
+        foreach($tugas as $tg) {
+            $lists .= "<option value='".$tg->id_tugas."'>".$tg->nama_tugas."</option>";
+        }
+
+        $callback = array('list_tugas'=>$lists);
+
+        echo json_encode($callback);
+    }
+
     public function simpan_penugasan()
     {
         $id_user = $this->input->post('id_user');
-        $id_kategori = $this->input->post('id_kategori');
         $id_tugas = $this->input->post('id_tugas');
         
 
         $data = array(
             'id_user' => $id_user, 
-            'id_kategori' => $id_kategori,
             'id_tugas' => $id_tugas
             
         );

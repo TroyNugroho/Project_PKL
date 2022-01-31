@@ -44,6 +44,15 @@ class UserModel extends CI_Model{
         return $query;
     }
 
+    public function get_skp()
+    {
+        $id = $this->session->userdata('nama');
+        $this->db->from('view_skp');
+        $this->db->where('nama', $id);
+
+        return $this->db->get()->result();
+    }
+
     public function get_kategori()
     {
         $this->db->from('penugasan');
@@ -69,6 +78,17 @@ class UserModel extends CI_Model{
     public function edit($table, $data, $where)
     {
         $this->db->update($table, $data, $where);
+    }
+
+    public function viewKategori() {
+        return $this->db->get('kategori')->result();
+    }
+
+    public function viewByKategori($id_kategori) {
+        $this->db->where('id_kategori',$id_kategori);
+        $result = $this->db->get('tugas')->result();
+
+        return $result;
     }
 
 }

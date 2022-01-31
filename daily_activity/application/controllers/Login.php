@@ -40,7 +40,7 @@ class Login extends CI_Controller {
 				// redirect('Admin/HomeAdmin');
 				echo"Halaman penjual masih belum tersedia !";
 			}
-			elseif ($this->session->userdata('posisi')=='pembeli') {
+			elseif ($this->session->userdata('posisi')!='admin') {
 				redirect('User/HomeUser');
 			}
 		} else {

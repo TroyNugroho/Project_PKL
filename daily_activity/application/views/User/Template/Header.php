@@ -10,13 +10,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Site Metas -->
-    <title>Ternakku</title>
+    <title>Daily Activity</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="<?= base_url() ?>assets/images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="<?= base_url() ?>assets/images/Logo-Polinema.png" type="image/x-icon">
     <link rel="apple-touch-icon" href="<?= base_url() ?>assets/images/apple-touch-icon.png">
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/megamenu.css" type="text/css" media="all" />
     <!-- <link href="assets/yamm/yamm.css" rel="stylesheet"> -->
@@ -30,6 +30,8 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/responsive.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/custom.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
 
 
 </head>
@@ -57,6 +59,7 @@
                         <li class="nav-item active"><a class="nav-link"
                                 href="<?= base_url('User/HomeUser/index')?>">Home</a></li>                
                         <li class="nav-item"><a class="nav-link" href="<?= base_url('User/HomeUser/tentang')?>">Penugasan</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= base_url('User/HomeUser/log')?>">Log</a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->

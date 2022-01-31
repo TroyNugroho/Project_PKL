@@ -76,6 +76,46 @@
 <script src="<?= base_url() ?>assets/js/form-validator.min.js"></script>
 <script src="<?= base_url() ?>assets/js/contact-form-script.js"></script>
 <script src="<?= base_url() ?>assets/js/custom.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+	$(document).ready(function() {
+		$("#loading").hide();
+
+		$("#id_kategori").change(function() {
+			$("#id_tugas").hide();
+			$("#loading").show();
+
+			$.ajax({
+				type: "POST",
+				url	: "<?php echo base_url("index.php/User/HomeUser/listTugas"); ?>",
+				data : {id_kategori : $("#id_kategori").val()},
+				dataType: "json",
+				beforeSend: function(e) {
+					if(e && e.overrideMimeType) {
+            			e.overrideMimeType("application/json;charset=UTF-8");
+          			}
+				},
+				success: function(response) {
+					$("#loading").hide();
+					$("#id_tugas").html(response.list_tugas).show();
+				},
+				error: function (xhr, ajaxOptions, thrownError) {
+          			alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+        		}
+			});
+		});
+	});
+</script>
+
+<script>
+  $( function() {
+    $( "#date" ).datepicker({
+      dateFormat: "yy-mm-dd"
+    });
+  } );
+  </script>
 </body>
 
 </html>
