@@ -28,6 +28,7 @@
 											<tr>
 												<th>No</th>
 												<th>Nama</th>
+												<th>Tanggal</th>
                                                 <th>Posisi</th>
                                                 <th>Kategori</th>
                                                 <th>Tugas</th>
@@ -44,6 +45,7 @@
 											<tr>
 												<td> <?= $no++?> </td>
 												<td> <?= $lg->nama?> </td>
+												<td> <?= $lg->tanggal?> </td>
                                                 <td> <?= $lg->posisi?> </td>
                                                 <td> <?= $lg->nama_kategori?> </td>
                                                 <td> <?= $lg->nama_tugas?> </td>

@@ -36,6 +36,7 @@
 													<a type="button" class="btn btn-outline-info btn-fw" href="<?= base_url('Admin/UserAdmin/edit_user/') . $us->id_user ?>">Edit</a>
 													<a type="button" class="btn btn-outline-warning btn-fw" href="<?= base_url('Admin/UserAdmin/detail_user/') . $us->id_user ?>">Detail</a>
 													<a type="button" class="btn btn-outline-danger btn-fw" href="<?= base_url('Admin/UserAdmin/hapus/') . $us->id_user ?>">Hapus</a>
+													<a type="button" class="btn btn-outline-info btn-fw" href="<?= base_url('Admin/UserAdmin/skp/') . $us->id_user ?>">SKP</a>
 												</td>
 											</tr>
 											<?php endforeach; ?>

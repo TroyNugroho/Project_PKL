@@ -146,6 +146,30 @@ class UserAdmin extends CI_Controller {
         $this->load->view('Admin/Template/Footer');
     }
 
+    
+    public function skp($id)
+    {
+        $sess['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->AdminModel->get_id($id);
+        $data['skp'] = $this->AdminModel->get_skp($id);
+
+        $this->load->view('Admin/Template/Header',$sess);
+        $this->load->view('Admin/UserSkp', $data);
+        $this->load->view('Admin/Template/Footer');
+    } 
+
+    public function getPdf($id)
+    {
+        $data['user'] = $this->AdminModel->get_id($id);
+        $data['skp'] = $this->AdminModel->get_skp($id);
+
+        $this->load->library('pdf');
+        $this->pdf->setPaper('A4', 'landscape');
+        $this->pdf->filename = "Laporan-SKP.pdf";        
+        $this->pdf->load_view('Admin/UserPdf', $data);
+        // $this->pdf->stream("Laporan-SKP");
+    }
+
     public function hapus($id_user)
     {
         $where = array('id_user' => $id_user);

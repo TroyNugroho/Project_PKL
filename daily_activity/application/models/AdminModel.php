@@ -26,7 +26,7 @@ class AdminModel extends CI_Model{
 
     public function get_id($id)
     {
-        $this->db->select('user.id_user, user.nama, user.email, user.alamat, user.telepon, user.foto_user, user.posisi');
+        $this->db->select('user.id_user, user.nama, user.email, user.alamat, user.telepon, user.foto_user, user.posisi, user.nip');
         $this->db->from('user');
         $hasil = $this->db->where('id_user', $id)->get();
 
@@ -35,6 +35,16 @@ class AdminModel extends CI_Model{
         }else{
             return false;
         }
+    }
+
+    public function get_skp($id)
+    {
+        $this->db->distinct();
+        $this->db->select('view_skp.nama_tugas, view_skp.id_penugasan, view_skp.id_user, view_skp.nama,view_skp.nip ,view_skp.posisi, view_skp.nama_kategori, view_skp.tanggal, view_skp.AK, view_skp.satuan_hasil, view_skp.waktu,SUM(view_skp.kuantitas) as kuantitas');
+        $this->db->from('view_skp');
+        $this->db->group_by('nama_tugas');
+        $hasil = $this->db->where('id_user', $id)->get();
+        return $hasil->result();
     }
 
     // Model Untuk penugasan

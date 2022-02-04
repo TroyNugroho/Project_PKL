@@ -16,6 +16,12 @@
                                         <?= form_error('nama','<small class="text-danger pl-3">','</small>'); ?>
                                     </div>
                                     <div class="form-group">
+                                        <label for="exampleInputEmail3">NIP</label>
+                                        <input type="text" class="form-control" id="nip" name="nip"
+                                            placeholder="NIP" value="<?= set_value('nip'); ?>">
+                                        <?= form_error('nip','<small class="text-danger pl-3">','</small>'); ?>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="exampleInputEmail3">Email</label>
                                         <input type="text" class="form-control" id="email" name="email"
                                             placeholder="Email" value="<?= set_value('email'); ?>">
@@ -31,8 +37,8 @@
                                         <label>Status</label>
                                         <select class="form-control" name="posisi" required>
                                             <option value=""> </option>
-                                            <option value="penjual">Penjual</option>
-                                            <option value="pembeli">Pembeli</option>
+                                            <option value="Administrasi">Administrasi</option>
+                                            <option value="Pustakawan">Pustakawan</option>
                                         </select>
                                     </div>
                                     <button type="submit" class="btn btn-primary me-2">Submit</button>

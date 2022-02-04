@@ -149,11 +149,17 @@ class HomeUser extends CI_Controller {
     {
         $id_user = $this->input->post('id_user');
         $id_tugas = $this->input->post('id_tugas');
+        $kuantitas = $this->input->post('kuantitas');
+        $tanggal = $this->input->post('tanggal');
+        $detail = $this->input->post('detail_hewan');
         
 
         $data = array(
             'id_user' => $id_user, 
-            'id_tugas' => $id_tugas
+            'id_tugas' => $id_tugas,
+            'kuantitas' => $kuantitas,
+            'tanggal' => $tanggal,
+            'details' => $detail
             
         );
         // var_dump($data);

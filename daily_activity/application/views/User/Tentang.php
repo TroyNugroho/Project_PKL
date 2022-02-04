@@ -55,8 +55,13 @@
                             </div>
 
                             <div class="form-group">
+                                <label>Kuantitas</label><br>
+                                <input type="text" name="kuantitas" id="kuantitas" class="form-control">
+                            </div>
+
+                            <div class="form-group">
                                 <label>Tanggal</label><br>
-                                <input type="text" id="date" class="form-control">
+                                <input type="text" name="tanggal" id="date" class="form-control">
                             </div>
 
                             <div class="form-group">

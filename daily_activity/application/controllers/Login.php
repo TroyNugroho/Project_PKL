@@ -56,12 +56,14 @@ class Login extends CI_Controller {
 	public function simpan_register()
 	{
 		$nama = $this->input->post('nama');
+		$nip = $this->input->post('nip');
         $email = $this->input->post('email');
         $password= $this->input->post('password');
         $posisi = $this->input->post('posisi');
 
         $data = array(
             'nama' => $nama,
+			'nip' => $nip,
             'email' => $email,  
             'password' => md5($password),
             'posisi' => $posisi,
